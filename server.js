@@ -31,6 +31,11 @@ const app = express();
 //UPDATE
 //DELETE
 
+//LANDING PAGE
+app.get("/", (req, res) => {
+    res.send("Welcome!")
+})
+
 //INDEX
 app.get("/pokemon", (req, res) => {
     res.send("index page")
@@ -63,7 +68,10 @@ app.get("/pokemon/:id/edit", (req, res) => {
 
 //SHOW
 app.get("/pokemon/:id", (req, res) => {
-    res.send("show page")
+    console.log(pokemon[req.params.id])
+    res.render("show.ejs", {
+        pokemonId: pokemon[req.params.id]
+    })
 })
 
 app.listen(3000, () => {
