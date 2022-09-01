@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Add Pokemon</title>
+    <title>Pokedex | Add Pokemon</title>
   </head>
   <body>
     <h1>Add A New Pokemon!</h1>
@@ -13,10 +13,13 @@
         Name: <input type="text" name="name" /><br/>
         <!-- text input for the ID -->
         ID: <input type="text" name="id" /><br/>
+        IMG(Please use a url): <input type="text" name="img" /><br/>
         <!-- text input for the Pokemon type -->
         Type: <input type="text" name="type" /><br/>
         <!-- submits the form and has a placeholder that says Add Pokemon -->
         <input type="submit" value="Add Pokemon" />
     </form>
+    <!-- Footer -->
+    <%-include("./partials/footer.ejs")%>
   </body>
 </html>

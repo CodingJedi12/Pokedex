@@ -57,20 +57,32 @@ app.delete("/pokemon/:id", (req, res) => {
 })
 
 //UPDATE
-app.post("/pokemon", (req, res) => {
-    console.log(req.body)
-})
+app.put("/pokemon/:id", (req, res) => {
+    pokemon[req.params.id] = req.body
+    res.redirect("/pokemon")})
 
 //CREATE
-// app.post("/pokemon", (req, res) => {
-//     pokemon.push(req.body)
-//     console.log(req.body)
-//     res.redirect("/pokemon")
-// })
+app.post("/pokemon", (req, res) => {
+    let type = req.body.type;
+    let typeArr = type.split(', ')
+    let newPokemon = {
+        id: req.body.id,
+        name: req.body.name,
+        img: req.body.img,
+        type: typeArr,
+
+    };
+    pokemon.push(newPokemon)
+    console.log(newPokemon)
+    res.redirect("/pokemon")
+})
 
 //EDIT
 app.get("/pokemon/:id/edit", (req, res) => {
-    res.send("edit page")
+    res.render("edit.ejs", {
+    pokemon: pokemon[req.params.id],
+    pokemonId: req.params.id
+    })
 })
 
 //SHOW
@@ -81,6 +93,7 @@ app.get("/pokemon/:id", (req, res) => {
     })
 })
 
+//CANN YOUUU HEARRRR MEEEE
 app.listen(3000, () => {
     console.log("GOTTA CATCH 'EM ALL")
 })
