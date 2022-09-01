@@ -53,7 +53,8 @@ app.get("/pokemon/new", (req, res) => {
 
 //DELETE
 app.delete("/pokemon/:id", (req, res) => {
-    console.log("deleted")
+        pokemon.splice(req.params.id, 1)
+        res.redirect("/pokemon")
 })
 
 //UPDATE
