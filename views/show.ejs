@@ -7,11 +7,20 @@
   <body>
     <h1><%=pokemonId.name%></h1>
     <img src="<%=pokemonId.img%>">
+    <ul>
+        <% for (i = 0; i < pokemonId.type.length; i++) { %>
+            <li>
+                <%=pokemonId.type[i]%>
+            </li>
+       <% } %>
+    </ul>
+    <h4>Stats</h4>
+    <% for (const stats in pokemonId.stats) {%>
+    <p>
+        <%=stats%>: <%=pokemonId.stats[stats]%>
+    </p>
+    <% } %>
     <!-- Footer -->
     <%-include("./partials/footer.ejs")%>
   </body>
 </html>
-
-<!-- <% %> means to run javascript -->
-
-<!-- <%= %> means to run it and insert the results into the html -->

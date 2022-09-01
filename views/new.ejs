@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Pokemon</title>
+  </head>
+  <body>
+    <h1>Add A New Pokemon!</h1>
+    <!-- creating a form for the user to fill out -->
+    <!-- the form will responsd to the action outlined in the /pokemon post method outlined in server.js  -->
+    <form action="/pokemon" method="POST">
+        <!-- gets a text input for the Pokemon name -->
+        Name: <input type="text" name="name" /><br/>
+        <!-- text input for the ID -->
+        ID: <input type="text" name="id" /><br/>
+        <!-- text input for the Pokemon type -->
+        Type: <input type="text" name="type" /><br/>
+        <!-- submits the form and has a placeholder that says Add Pokemon -->
+        <input type="submit" value="Add Pokemon" />
+    </form>
+  </body>
+</html>

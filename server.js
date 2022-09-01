@@ -16,6 +16,7 @@ const app = express();
 //TELLING EXPRESS TO USE MIDDLEWARE
   //Returns middleware that only parses urlencoded bodies and only looks at requests where the Content-Type header matches the type option
   //The extended option allows to choose between parsing the URL-encoded data with the querystring library (when false) or the qs library (when true).
+  app.use(express.static('public'))
   app.use(express.urlencoded({extended: false}))
   app.use(methodOverride("_method"))
 
@@ -38,28 +39,34 @@ app.get("/", (req, res) => {
 
 //INDEX
 app.get("/pokemon", (req, res) => {
-    res.send("index page")
+    res.render("index.ejs", {
+        pokedex: pokemon
+    })
 })
 
 //NEW
 app.get("/pokemon/new", (req, res) => {
-    res.send("new page")
+   res.render("new.ejs", {
+    pokedex: pokemon
+   })
 })
 
 //DELETE
 app.delete("/pokemon/:id", (req, res) => {
-    cnosole.log("deleted")
+    console.log("deleted")
 })
 
 //UPDATE
 app.post("/pokemon", (req, res) => {
-    console.log("updated")
+    console.log(req.body)
 })
 
 //CREATE
-app.post("/pokemon", (req, res) => {
-    console.log("created")
-})
+// app.post("/pokemon", (req, res) => {
+//     pokemon.push(req.body)
+//     console.log(req.body)
+//     res.redirect("/pokemon")
+// })
 
 //EDIT
 app.get("/pokemon/:id/edit", (req, res) => {
