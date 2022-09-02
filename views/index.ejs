@@ -8,9 +8,9 @@
   <body>
     <div id="header">
         <h1>Pokedex</h1>
-    </div>
-    <a href="/pokemon/new">Add A New Pokemon</a>
-    <div id="items">
+        <button id="Add"><a href="/pokemon/new">Add A New Pokemon</a></button>
+      </div>
+        <div id="items">
         <% for (i = 0; i < pokedex.length; i++) { %>
         <h2><%=pokedex[i].name%> | ID:<%=pokedex[i].id%></h2>
         <a href="/pokemon/<%=[i]%>"><img src="<%=pokedex[i].img%>"></a>
