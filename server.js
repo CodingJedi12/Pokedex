@@ -61,18 +61,41 @@ app.delete("/pokemon/:id", (req, res) => {
 
 //UPDATE
 app.put("/pokemon/:id", (req, res) => {
-    pokemon[req.params.id] = req.body //puts pokemon at indicated index as info received from "new"
+    let type = req.body.type; //assings var type to the data received in the html body value "type"
+    let typeArr = type.split(', ') //splits the received variable based on the input and redefines as an array
+    let statsObject = {
+        hp: req.body.hp,
+        attack: req.body.attack,
+        defense: req.body.defense,
+    };
+
+    let newPokemon = {
+        id: req.body.id,//object id now input id
+        name: req.body.name,//object name now input name
+        img: req.body.img,//object img now input img
+        type: typeArr,//object type now input type array
+        stats: statsObject//stats object
+
+    };
+    pokemon[req.params.id] = newPokemon //puts pokemon at indicated index as info received from "new"
     res.redirect("/pokemon")}) //redirects user back to pokedex
 
 //CREATE
 app.post("/pokemon", (req, res) => {
     let type = req.body.type; //assings var type to the data received in the html body value "type"
     let typeArr = type.split(', ') //splits the received variable based on the input and redefines as an array
+    let statsObject = {
+        hp: req.body.hp,
+        attack: req.body.attack,
+        defense: req.body.defense,
+    };
+
     let newPokemon = {
         id: req.body.id,//object id now input id
         name: req.body.name,//object name now input name
         img: req.body.img,//object img now input img
         type: typeArr,//object type now input type array
+        stats: statsObject//stats object
 
     };
     pokemon.push(newPokemon) //pushes new pokemon object to the pokemon array
